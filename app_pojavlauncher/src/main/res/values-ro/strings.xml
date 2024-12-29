@@ -113,6 +113,8 @@
     <string name="customctrl_addsubbutton">Adaugă sub-buton</string>
     <string name="main_share_logs">Distribuie fişierul jurnal</string>
     <string name="main_play">Joacă</string>
+    <string name="auto_ram_subtitle">Activează ajustarea automată RAM</string>
+    <string name="auto_ram_title">Auto RAM</string>
     <string name="autoram_info_msg">Memorie setată la %d MB</string>
     <string name="mcl_setting_check_libraries">Verifică bibliotecile după descărcare</string>
     <string name="dl_library_sha_fail">Biblioteca %s este deteriorată și va fi redescărcată</string>

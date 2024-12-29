@@ -19,6 +19,19 @@
             android:summary="@string/mcl_setting_subtitle_javaargs"
             android:title="@string/mcl_setting_title_javaargs" />
 
+        <androidx.preference.SwitchPreferenceCompat
+            android:defaultValue="true"
+            android:key="autoRam"
+            android:summary="@string/auto_ram_subtitle"
+            android:title="@string/auto_ram_title" />
+
+        <Preference
+            android:key="autoRamDisNotif"
+            android:title="@string/auto_ram_dis_arg_warn"
+            android:summary="@string/auto_ram_dis_arg_notif"
+            android:enabled="true"
+            android:selectable="false" />
+
         <net.kdt.pojavlaunch.prefs.CustomSeekBarPreference
             android:key="allocation"
 

@@ -3,6 +3,7 @@ package net.kdt.pojavlaunch.prefs.screens;
 import static net.kdt.pojavlaunch.Architecture.is32BitsDevice;
 import static net.kdt.pojavlaunch.Tools.getTotalDeviceMemory;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -51,6 +52,7 @@ public class LauncherPreferenceJavaFragment extends LauncherPreferenceFragment {
             openMultiRTDialog();
             return true;
         });
+        computeVisibility();
     }
 
     private void openMultiRTDialog() {
@@ -59,5 +61,16 @@ public class LauncherPreferenceJavaFragment extends LauncherPreferenceFragment {
             mDialogScreen.prepare(getContext(), mVmInstallLauncher);
         }
         mDialogScreen.show();
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences p, String s) {
+        super.onSharedPreferenceChanged(p, s);
+        computeVisibility();
+    }
+
+    private void computeVisibility(){
+        requirePreference("allocation").setVisible(LauncherPreferences.PREF_AUTO_RAM);
+        requirePreference("autoRamDisNotif").setVisible(!LauncherPreferences.PREF_AUTO_RAM);
     }
 }

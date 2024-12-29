@@ -129,6 +129,8 @@
     <string name="main_share_logs">Udostępnij plik dziennika</string>
     <string name="main_install_jar_file">Wykonaj plik .jar</string>
     <string name="main_play">Graj</string>
+    <string name="auto_ram_subtitle">Włącza automatyczny regulator pamięci RAM</string>
+    <string name="auto_ram_title">Automatyczny ram</string>
     <string name="autoram_info_msg">Przydzielono %d MB pamięci</string>
     <string name="mcl_setting_check_libraries">Sprawdź biblioteki po pobraniu</string>
     <string name="dl_library_sha_fail">Biblioteka %s jest uszkodzona i zostanie pobrana ponownie</string>

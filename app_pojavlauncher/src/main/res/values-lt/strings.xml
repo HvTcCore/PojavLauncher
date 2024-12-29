@@ -118,6 +118,8 @@
     <string name="customctrl_addsubbutton">Pridetį mygtukų spintos mygtuką</string>
     <string name="main_share_logs">Pasidalinti žurnalo failą</string>
     <string name="main_play">Žaisti</string>
+    <string name="auto_ram_subtitle">Įjungia automatišką RAM keitėją</string>
+    <string name="auto_ram_title">Automatiškas RAM</string>
     <string name="autoram_info_msg">Atmintis pakeista į %d MB</string>
     <string name="mcl_setting_check_libraries">Patikrinti depozitoriumo bibliotekas po atsisiuntimo</string>
     <string name="dl_library_sha_fail">Depozitoriumo biblioteka %s yra sugedusi ir būs persiųsta</string>

@@ -39,6 +39,7 @@ public class LauncherPreferences {
     public static boolean PREF_DISABLE_GESTURES = false;
     public static boolean PREF_DISABLE_SWAP_HAND = false;
     public static float PREF_MOUSESPEED = 1f;
+    public static boolean PREF_AUTO_RAM = true;
     public static int PREF_RAM_ALLOCATION;
     public static String PREF_DEFAULT_RUNTIME;
     public static boolean PREF_SUSTAINED_PERFORMANCE = false;
@@ -85,8 +86,9 @@ public class LauncherPreferences {
         PREF_CHECK_LIBRARY_SHA = DEFAULT_PREF.getBoolean("checkLibraries",true);
         PREF_DISABLE_GESTURES = DEFAULT_PREF.getBoolean("disableGestures",false);
         PREF_DISABLE_SWAP_HAND = DEFAULT_PREF.getBoolean("disableDoubleTap", false);
+        PREF_AUTO_RAM = DEFAULT_PREF.getBoolean("autoRam", true);
         PREF_RAM_ALLOCATION = DEFAULT_PREF.getInt("allocation", findBestRAMAllocation(ctx));
-        PREF_CUSTOM_JAVA_ARGS = DEFAULT_PREF.getString("javaArgs", "");
+        //PREF_CUSTOM_JAVA_ARGS = DEFAULT_PREF.getString("javaArgs", "");
         PREF_SUSTAINED_PERFORMANCE = DEFAULT_PREF.getBoolean("sustainedPerformance", isDevicePowerful);
         PREF_VIRTUAL_MOUSE_START = DEFAULT_PREF.getBoolean("mouse_start", false);
         PREF_ARC_CAPES = DEFAULT_PREF.getBoolean("arc_capes",false);
@@ -109,6 +111,38 @@ public class LauncherPreferences {
         PREF_VERIFY_MANIFEST = DEFAULT_PREF.getBoolean("verifyManifest", true);
         PREF_SKIP_NOTIFICATION_PERMISSION_CHECK = DEFAULT_PREF.getBoolean(PREF_KEY_SKIP_NOTIFICATION_CHECK, false);
         PREF_VSYNC_IN_ZINK = DEFAULT_PREF.getBoolean("vsync_in_zink", true);
+
+        int androidHeap = (int) (Runtime.getRuntime().maxMemory() / 1024l / 512l);
+        int doubleAndroidHeap = androidHeap * 2;
+        PREF_CUSTOM_JAVA_ARGS = DEFAULT_PREF.getString("javaArgs", "");
+        if (PREF_CUSTOM_JAVA_ARGS.isEmpty()) {
+            String DEFAULT_JAVA_ARGS =
+                "-Xms" + (androidHeap > 800 ? 800 : androidHeap) + "m " +
+                // (32bit) More than 800mb may make JVM not allocateable and crash
+                "-Xmx" + (doubleAndroidHeap > 2000 ? 2000 : doubleAndroidHeap) + "m"; /* "m " +
+
+                "-XX:+UseG1GC " +
+                "-XX:+ParallelRefProcEnabled " +
+                "-XX:MaxGCPauseMillis=200 " +
+                "-XX:+UnlockExperimentalVMOptions " +
+                "-XX:+AlwaysPreTouch " +
+                "-XX:G1NewSizePercent=30 " +
+                "-XX:G1MaxNewSizePercent=40 " +
+                "-XX:G1HeapRegionSize=8M " +
+                "-XX:G1ReservePercent=20 " +
+                "-XX:G1HeapWastePercent=5 " +
+                "-XX:G1MixedGCCountTarget=4 " +
+                "-XX:InitiatingHeapOccupancyPercent=15 " +
+                "-XX:G1MixedGCLiveThresholdPercent=90 " +
+                "-XX:G1RSetUpdatingPauseTimePercent=5 " +
+                "-XX:SurvivorRatio=32 " +
+                "-XX:+PerfDisableSharedMem " +
+                "-XX:MaxTenuringThreshold=1";
+                */
+
+            PREF_CUSTOM_JAVA_ARGS = DEFAULT_JAVA_ARGS;
+            DEFAULT_PREF.edit().putString("javaArgs", DEFAULT_JAVA_ARGS).commit();
+        }
 
         String argLwjglLibname = "-Dorg.lwjgl.opengl.libname=";
         for (String arg : JREUtils.parseJavaArguments(PREF_CUSTOM_JAVA_ARGS)) {

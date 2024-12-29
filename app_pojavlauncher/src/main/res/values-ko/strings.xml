@@ -130,6 +130,8 @@
     <string name="main_share_logs">기록 파일 공유</string>
     <string name="main_install_jar_file">.jar 파일 실행</string>
     <string name="main_play">플레이</string>
+    <string name="auto_ram_subtitle">자동 램 할당 활성화하기</string>
+    <string name="auto_ram_title">자동 램 할당</string>
     <string name="autoram_info_msg">메모리가 %dMB 할당되었습니다.</string>
     <string name="mcl_setting_check_libraries">다운로드 후 라이브러리 확인</string>
     <string name="mcl_setting_check_libraries_subtitle">이 설정은 라이브러리 해시를 강제로 확인합니다. 잘못된 다운로드를 막을 수 있습니다.</string>

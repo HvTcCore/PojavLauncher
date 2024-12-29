@@ -76,7 +76,8 @@
     <string name="global_retry">Обновить</string>
     <string name="global_default">По умолчанию</string>
     <!-- MainActivity: strings -->
-    <string name="mcn_exit_title">Произошёл собой приложения/игры с кодом %d. Проверьте latestlog.txt, чтобы получить больше информации.</string>
+    <string name="mcn_exit_title">Произошёл собой приложения/игры с кодом %d. Проверьте latestlog.txt для подробностей.</string>
+    <string name="mcn_signal_title">Приложение/Игра завершена из-за фатального сигнала %d. Проверьте latestlog.txt для подробностей.</string>
     <string name="mcn_exit_confirm">Вы уверены, что хотите принудительно завершить игру?</string>
     <string name="mcn_check_fail_vulkan_support">Визуализатор Zink (Vulkan) не поддерживается на вашем устройстве.</string>
     <!-- MainActivity: Control buttons -->
@@ -130,6 +131,11 @@
     <string name="main_share_logs">Поделиться журналом</string>
     <string name="main_install_jar_file">Запустить .jar</string>
     <string name="main_play">Играть</string>
+    <string name="auto_ram_subtitle">Автоматически управляет количеством выделенного ОЗУ</string>
+    <string name="auto_ram_title">Автоматическое выделение ОЗУ</string>
+    <string name="auto_ram_dis_arg_warn">Внимание! Автоматическое выделение ОЗУ отключено"</string>
+    <string name="auto_ram_dis_arg_notif">Необходимо выставить значения "-Xms" и "-Xmx" в "Аргументы запуска JVM"</string>
+    <string name="auto_ram_dis_msg">Нестабильно! Автовыделение ОЗУ отключено.</string>
     <string name="autoram_info_msg">Выделено %d Мбайт ОЗУ</string>
     <string name="mcl_setting_check_libraries">Проверка библиотек после загрузки</string>
     <string name="mcl_setting_check_libraries_subtitle">Принуждает лаунчер проверять хеш библиотеки, если он доступен. Предотвращает использование повреждённых библиотек.</string>
@@ -146,7 +152,8 @@
     <string name="customctrl_swipeable">Считывать движение пальца</string>
     <string name="customctrl_forward_lock">Фиксатор движения</string>
     <string name="customctrl_absolute_tracking">Динамический центр</string>
-    <string name="memory_warning_msg">Текущий объем свободной оперативной памяти (%d) меньше, чем выделенная (%d), что может привести к сбоям. Измените количество выделенной памяти при сбое игры.</string>
+    <string name="memory_warning_msg">Текущий объем свободной ОЗУ (%d) меньше, чем выделенной (%d), что может привести к сбоям. Измените количество выделенной памяти при сбое игры.</string>
+    <string name="address_memory_warning_msg">Текущий объем свободной адресуемой ОЗУ (%d) меньше, чем выделенной (%d), что может привести к сбоям. Измените количество выделенной памяти при сбое игры.</string>
     <string name="mcl_memory_allocation">Выделение памяти</string>
     <string name="mcl_memory_allocation_subtitle">Управление объёмом выделяемой игре памяти.</string>
     <string name="multirt_runtime_corrupt">Среда выполнения Java повреждена</string>
@@ -240,7 +247,8 @@
     <string name="create_profile">Новый профиль</string>
     <string name="preference_shader_dump_title">Сохранять дамп шейдеров</string>
     <string name="preference_shader_dump_description">Записывать в файл журнала данные о конвертации шейдеров.</string>
-    <string name="percent_format">%d %%</string>
+    <string name="percent_format">%d%%</string>
+    <string name="millisecond_format">%d мс</string>
     <string name="customctrl_editor_exit_title">Выйти?</string>
     <string name="customctrl_editor_exit_msg">Вы действительно хотите выйти?</string>
     <string name="customctrl_editor_exit">Покинуть редактор</string>
@@ -282,6 +290,7 @@
     <string name="preference_vulkan_driver_system_description">Принудительно использовать системный Vulkan вместо драйвера Turnip на графике Adreno. Повлияет только на Zink и моды, напрямую использующие Vulkan.</string>
     <string name="generic_install">Установить</string>
     <string name="generic_apply">Применить</string>
+    <string name="generic_debug">Отладка</string>
     <string name="search_modpack_no_result">Сборок не найдено</string>
     <string name="search_modpack_error">Не удалось выполнить поиск сборок</string>
     <string name="search_modpack_download_error">Не удалось загрузить метаданные сборки</string>
@@ -329,5 +338,30 @@
     <string name="newdl_starting">Чтение метаданных игры…</string>
     <string name="newdl_downloading_metadata">Загрузка метаданных игры (%s)</string>
     <string name="newdl_downloading_game_files">Загрузка файлов… (%d/%d, %.2f МБ)</string>
+    <string name="mcl_button_open_directory">Открыть папку игры</string>
     <string name="discord_invite" translatable="false">https://discord.gg/pojavlauncher-sng-962263126647144449</string>
+    <string name="controller_remapper_exit_part2">чтобы выйти</string>
+    <string name="controller_remapper_operating_mode">Текущий режим</string>
+    <string name="customctrl_visibility_title">Видимость</string>
+    <string name="log_view_button_scroll_off">Автопрокрутка\nOFF</string>
+    <string name="log_view_button_scroll_on">Автопрокрутка\nON</string>
+    <string name="log_view_button_output_off">Вывод\nOFF</string>
+    <string name="log_view_button_output_on">Вывод\nON</string>
+    <string name="log_view_label_log_output">Вывод лога:</string>
+    <string name="execute_jar_failed_to_read_file">Ошибка чтения .jar файла</string>
+    <string name="execute_jar_incompatible_runtime">Функция выполнения .jar несовместима с Java %d</string>
+    <string name="local_login_bad_username_title">Недопустимое имя пользователя</string>
+    <string name="local_login_bad_username_text">Имя пользователя должно составлять 3-16 символов и состоять только из латинских букв, арабских цифр и подчёркиваний</string>
+    <string name="controller_remapper_expand_entry">Разверните, чтобы изменить коды клавиш</string>
+    <string name="preference_remap_controller_title">Изменить привязку кнопок контроллера</string>
+    <string name="preference_remap_controller_description">Позволяет изменять клавиши клавиатуры, привязанные к каждой кнопке контроллера</string>
+    <string name="customctrl_visibility_ingame">В игре</string>
+    <string name="customctrl_visibility_in_menus">В меню</string>
+    <string name="quick_setting_title">Быстрые настройки</string>
+    <string name="cropper_lock_horizontal">Гориз. блок</string>
+    <string name="cropper_reset">Сброс</string>
+    <string name="cropper_select_cancelled">Выбор отменён</string>
+    <string name="cropper_title">Выберите часть изображения</string>
+    <string name="controller_remapper_exit_part1">Удерживайте</string>
+    <string name="cropper_lock_vertical">Верт. блок</string>
 </resources>

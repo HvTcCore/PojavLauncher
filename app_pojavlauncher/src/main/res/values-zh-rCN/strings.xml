@@ -130,6 +130,8 @@
     <string name="main_share_logs">分享日志文件</string>
     <string name="main_install_jar_file">执行 .jar</string>
     <string name="main_play">启动游戏</string>
+    <string name="auto_ram_subtitle">启用 RAM 自动调节器</string>
+    <string name="auto_ram_title">自动 RAM</string>
     <string name="autoram_info_msg">内存已设为 %d MB！</string>
     <string name="mcl_setting_check_libraries">在下载完成后检查依赖库</string>
     <string name="mcl_setting_check_libraries_subtitle">此选项强制启动器在哈希值可用时检查运行库，防止下载错误。</string>

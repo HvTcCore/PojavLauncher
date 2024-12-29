@@ -14,6 +14,7 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     env:
+      GPLAY_KEYSTORE_PASSWORD: ${{ secrets.GPLAY_KEYSTORE_PASSWORD }}
       CURSEFORGE_API_KEY: ${{ secrets.CURSEFORGE_API_KEY }}
     steps:
       - name: Checkout
@@ -77,7 +78,7 @@ jobs:
         run: |
           # Build the launcher
           gradle :app_pojavlauncher:assembleRelease
-          mv app_pojavlauncher/build/outputs/apk/release/app_pojavlauncher-release-unsigned.apk out/app-release-unsigned.apk
+          mv app_pojavlauncher/build/outputs/apk/release/app_pojavlauncher-release.apk out/app-release.apk
 
       - name: Build Debug .apk
         run: |
@@ -85,17 +86,23 @@ jobs:
           gradle :app_pojavlauncher:assembleDebug
           mv app_pojavlauncher/build/outputs/apk/debug/app_pojavlauncher-debug.apk out/app-debug.apk
 
+      - name: Build Google Play .aab
+        if: github.repository_owner == 'PojavLauncherTeam' && github.ref_name == 'v3_openjdk'
+        run: |
+          gradle :app_pojavlauncher:bundleGplay
+          mv app_pojavlauncher/build/outputs/bundle/gplay/app_pojavlauncher-gplay.aab out/app-gplay.aab
+
       - name: Build Release APK without runtime
         run: |
           rm -r app_pojavlauncher/src/main/assets/components/jre
           rm -r app_pojavlauncher/src/main/assets/components/jre-new
           rm -r app_pojavlauncher/src/main/assets/components/jre-21
           gradle assembleRelease
-          mv app_pojavlauncher/build/outputs/apk/release/app_pojavlauncher-release-unsigned.apk out/app-release-unsigned-noruntime.apk
+          mv app_pojavlauncher/build/outputs/apk/release/app_pojavlauncher-release.apk out/app-release-noruntime.apk
       - name: Gen md5sums
         run: |
-          md5sum out/app-release-unsigned.apk > out/app-release-unsigned.md5
-          md5sum out/app-release-unsigned-noruntime.apk > out/app-release-unsigned-noruntime.md5
+          md5sum out/app-release.apk > out/app-release.md5
+          md5sum out/app-release-noruntime.apk > out/app-release-noruntime.md5
 
       - name: Build Debug APK without runtime
         run: |
@@ -109,8 +116,8 @@ jobs:
       - name: Upload Release APK
         uses: actions/upload-artifact@v3
         with:
-          name: app-release-unsigned
-          path: out/app-release-unsigned.*
+          name: app-release
+          path: out/app-release.*
 
       - name: Upload Debug APK
         uses: actions/upload-artifact@v3
@@ -118,11 +125,28 @@ jobs:
           name: app-debug
           path: out/app-debug.*
 
+      - name: Upload AAB
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-release-aab
+          path: out/app-gplay.aab
+
+      - name: Upload onto the Google Play testing track
+        continue-on-error: true
+        if: github.repository_owner == 'PojavLauncherTeam' && github.ref_name == 'v3_openjdk'
+        uses: r0adkll/upload-google-play@v1.1.2
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.GPLAY_SERVICE_JSON }}
+          packageName: net.kdt.pojavlaunch
+          releaseFiles: out/app-gplay.aab
+          track: internal
+          inAppUpdatePriority: 5
+
       - name: Upload Release APK (without runtime)
         uses: actions/upload-artifact@v3
         with:
-          name: app-release-unsigned-noruntime
-          path: out/app-release-unsigned-noruntime.*
+          name: app-release-noruntime
+          path: out/app-release-noruntime.*
 
       - name: Upload Debug APK (without runtime)
         uses: actions/upload-artifact@v3

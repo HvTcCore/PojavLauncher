@@ -115,6 +115,8 @@
     <string name="customctrl_addsubbutton">Ajouter un sous-bouton</string>
     <string name="main_share_logs">Partager le fichier journal</string>
     <string name="main_play">Jouer</string>
+    <string name="auto_ram_subtitle">Active le régulateur automatique de la mémoire RAM</string>
+    <string name="auto_ram_title">Mémoire RAM automatique</string>
     <string name="autoram_info_msg">Mémoire définie à %d Mo</string>
     <string name="mcl_setting_check_libraries">Vérifier les bibliothèques après téléchargement</string>
     <string name="dl_library_sha_fail">La bibliothèque %s est endommagée et sera retéléchargée</string>

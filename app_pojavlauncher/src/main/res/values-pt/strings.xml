@@ -118,6 +118,8 @@
     <string name="main_share_logs">Partilhar log</string>
     <string name="main_install_jar_file">Executar um .jar</string>
     <string name="main_play">Jogar</string>
+    <string name="auto_ram_subtitle">Ativar ajuste automático de RAM</string>
+    <string name="auto_ram_title">Auto RAM</string>
     <string name="autoram_info_msg">Memória definida para %d MB</string>
     <string name="mcl_setting_check_libraries">Verificar as bibliotecas depois de transferir</string>
     <string name="dl_library_sha_fail">A biblioteca %s está danificada e irá ser transferida novamente</string>
