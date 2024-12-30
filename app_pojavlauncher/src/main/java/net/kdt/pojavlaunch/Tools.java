@@ -184,25 +184,29 @@ public final class Tools {
         int localeString;
         int freeAddressSpace = Architecture.is32BitsDevice() ? getMaxContinuousAddressSpaceSize() : -1;
         Log.i("MemStat", "Free RAM: " + freeDeviceMemory + " Addressable: " + freeAddressSpace);
-        if(freeDeviceMemory > freeAddressSpace && freeAddressSpace != -1) {
-            freeDeviceMemory = freeAddressSpace;
-            localeString = R.string.address_memory_warning_msg;
-        } else {
-            localeString = R.string.memory_warning_msg;
-        }
 
-        if(LauncherPreferences.PREF_RAM_ALLOCATION > freeDeviceMemory) {
-            int finalDeviceMemory = freeDeviceMemory;
-            LifecycleAwareAlertDialog.DialogCreator dialogCreator = (dialog, builder) ->
-                builder.setMessage(activity.getString(localeString, finalDeviceMemory, LauncherPreferences.PREF_RAM_ALLOCATION))
-                        .setPositiveButton(android.R.string.ok, (d, w)->{});
+        if (LauncherPreferences.PREF_AUTO_RAM) {
+            if(freeDeviceMemory > freeAddressSpace && freeAddressSpace != -1) {
+                freeDeviceMemory = freeAddressSpace;
+                localeString = R.string.address_memory_warning_msg;
+            } else {
+                localeString = R.string.memory_warning_msg;
+            }
 
-            if(LifecycleAwareAlertDialog.haltOnDialog(activity.getLifecycle(), activity, dialogCreator)) {
-                return; // If the dialog's lifecycle has ended, return without
-                // actually launching the game, thus giving us the opportunity
-                // to start after the activity is shown again
+            if(LauncherPreferences.PREF_RAM_ALLOCATION > freeDeviceMemory) {
+                int finalDeviceMemory = freeDeviceMemory;
+                LifecycleAwareAlertDialog.DialogCreator dialogCreator = (dialog, builder) ->
+                    builder.setMessage(activity.getString(localeString, finalDeviceMemory, LauncherPreferences.PREF_RAM_ALLOCATION))
+                            .setPositiveButton(android.R.string.ok, (d, w)->{});
+
+                if(LifecycleAwareAlertDialog.haltOnDialog(activity.getLifecycle(), activity, dialogCreator)) {
+                    return; // If the dialog's lifecycle has ended, return without
+                    // actually launching the game, thus giving us the opportunity
+                    // to start after the activity is shown again
+                }
             }
         }
+
         Runtime runtime = MultiRTUtils.forceReread(Tools.pickRuntime(minecraftProfile, versionJavaRequirement));
         JMinecraftVersionList.Version versionInfo = Tools.getVersionInfo(versionId);
         LauncherProfiles.load();
