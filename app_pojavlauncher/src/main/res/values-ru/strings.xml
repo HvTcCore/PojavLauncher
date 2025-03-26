@@ -76,8 +76,8 @@
     <string name="global_retry">Обновить</string>
     <string name="global_default">По умолчанию</string>
     <!-- MainActivity: strings -->
-    <string name="mcn_exit_title">Произошёл собой приложения/игры с кодом %d. Проверьте latestlog.txt, чтобы получить больше информации.</string>
-    <string name="mcn_signal_title">Произошло аварийное завершение игры с сигналом %d. Проверьте latestlog.txt, чтобы получить больше информации.</string>
+    <string name="mcn_exit_title">Произошёл сбой приложения/игры с кодом %d. Проверьте latestlog.txt для подробностей.</string>
+    <string name="mcn_signal_title">Произошло аварийное завершение игры с сигналом %d. Проверьте latestlog.txt для подробностей.</string>
     <string name="mcn_exit_confirm">Вы уверены, что хотите принудительно завершить игру?</string>
     <string name="mcn_check_fail_vulkan_support">Визуализатор Zink (Vulkan) не поддерживается на вашем устройстве.</string>
     <!-- MainActivity: Control buttons -->
@@ -131,6 +131,11 @@
     <string name="main_share_logs">Поделиться журналом</string>
     <string name="main_install_jar_file">Запустить .jar</string>
     <string name="main_play">Играть</string>
+    <string name="auto_ram_title">Автоматическое выделение ОЗУ</string>
+    <string name="auto_ram_subtitle">Автоматически управляет количеством выделенного ОЗУ</string>
+    <string name="auto_ram_dis_arg_warn">Внимание! Автоматическое выделение ОЗУ отключено"</string>
+    <string name="auto_ram_dis_arg_notif">Необходимо выставить значения "-Xms" и "-Xmx" в "Аргументы запуска JVM"</string>
+    <string name="auto_ram_dis_msg">Нестабильно! Автовыделение ОЗУ отключено.</string>
     <string name="autoram_info_msg">Выделено %d Мбайт ОЗУ</string>
     <string name="mcl_setting_check_libraries">Проверка библиотек после загрузки</string>
     <string name="mcl_setting_check_libraries_subtitle">Принуждает лаунчер проверять хеш библиотеки, если он доступен. Предотвращает использование повреждённых библиотек.</string>
@@ -147,8 +152,8 @@
     <string name="customctrl_swipeable">Считывать движение пальца</string>
     <string name="customctrl_forward_lock">Фиксатор движения</string>
     <string name="customctrl_absolute_tracking">Динамический центр</string>
-    <string name="memory_warning_msg">Текущий объем свободной оперативной памяти (%d) меньше, чем выделенная (%d), что может привести к сбоям. Измените количество выделенной памяти при сбое игры.</string>
-    <string name="address_memory_warning_msg">Текущий объём линейно адресуемой оперативной памяти (%d) меньше, чем выделенная (%d), что может привести к сбою. В случае сбоя игры измените количество выделенной памяти.</string>
+    <string name="memory_warning_msg">Текущий объем свободной ОЗУ (%d) меньше, чем выделенной (%d), что может привести к сбою. Измените количество выделенной памяти при сбое игры.</string>
+    <string name="address_memory_warning_msg">Текущий объём линейно адресуемой ОЗУ (%d) меньше, чем выделенной (%d), что может привести к сбою. В случае сбоя игры измените количество выделенной памяти.</string>
     <string name="mcl_memory_allocation">Выделение памяти</string>
     <string name="mcl_memory_allocation_subtitle">Управление объёмом выделяемой игре памяти.</string>
     <string name="multirt_runtime_corrupt">Среда выполнения Java повреждена</string>
@@ -242,7 +247,7 @@
     <string name="create_profile">Новый профиль</string>
     <string name="preference_shader_dump_title">Сохранять дамп шейдеров</string>
     <string name="preference_shader_dump_description">Записывать в файл журнала данные о конвертации шейдеров.</string>
-    <string name="percent_format">%d %%</string>
+    <string name="percent_format">%d%%</string>
     <string name="millisecond_format">%d мс</string>
     <string name="customctrl_editor_exit_title">Выйти?</string>
     <string name="customctrl_editor_exit_msg">Вы действительно хотите выйти?</string>
